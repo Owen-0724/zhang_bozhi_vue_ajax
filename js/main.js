@@ -25,31 +25,29 @@ const app = Vue.createApp({
     },
     methods: {
         getMovie(id) {
-            console.log(id);
             this.loading = true;
             this.error = false;
-            const movieInfoCon = document.querySelector("#movieInfoCon");
-
+        
             fetch(`http://localhost:8000/movies/${id}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data.length > 0) {
-                        const movieData = data[0];
-                        this.title = movieData.title ?? 'Not available';
-                        this.short_description = movieData.short_description ?? 'Not available';
-                        this.director = movieData.name ?? 'Not available';
-                        this.poster = movieData.poster ?? '';
-                    } else {
-                        this.error = 'No movie found with the given ID.';
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("No movie found with the given ID.");
                     }
+                    return res.json();
+                })
+                .then(data => {
+                    this.title = data.title || 'Not available';
+                    this.short_description = data.short_description || 'Not available';
+                    this.director = data.director || 'Not available';
+                    this.poster = data.poster || 'placeholder.jpg';
                     this.loading = false;
                 })
                 .then(() => {
-                    movieInfoCon.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const movieInfoCon = document.querySelector("#movieInfoCon");
+                    movieInfoCon.scrollIntoView({ behavior: 'smooth', block: 'end' });
                 })
                 .catch(error => {
-                    console.error(error);
-                    this.error = "Failed to fetch movie details.";
+                    this.error = error.message;
                     this.loading = false;
                 });
         }

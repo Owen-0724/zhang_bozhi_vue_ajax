@@ -22,20 +22,21 @@ class MovieController extends Controller
         $movie = Movie::join('directors', 'movies.director_id', '=', 'directors.id')
             ->select(
                 'movies.id',
-                'title',
-                'short_description',
-                'poster',
+                'movies.title',
+                'movies.short_description',
+                'movies.poster',
                 'directors.name as director'
             )
-            ->where('movies.id', '=', $id)
-            ->first(); 
-
+            ->where('movies.id', $id)
+            ->first(); // <-- returns a single object instead of a collection
+    
         if (!$movie) {
-            return response()->json(['error' => 'Movie not found'], 404);
+            return response()->json(['error' => 'No movie found with the given ID.'], 404);
         }
-
+    
         return response()->json($movie);
     }
+    
 
     public function save(Request $request) {
         $this->validate($request, [
