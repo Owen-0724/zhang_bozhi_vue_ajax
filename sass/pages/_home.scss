@@ -27,6 +27,18 @@
 }
 
 #info-box img{
-  max-width: 300px;
+  display: block;
+  max-width: 200px;
+  margin: auto;
 }
 
+@media screen and (min-width: 1200px) {
+  #description{
+    margin-bottom: 2rem;
+  }
+
+  #info-box img{
+    max-width: 300px;
+    margin:0;
+  }
+}
