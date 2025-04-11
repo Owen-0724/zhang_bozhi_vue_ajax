@@ -1,0 +1,39 @@
+.content {
+  display: none;
+}
+
+#web-dev {
+  display: block;
+}
+
+.img-container img {
+  margin: 30px;
+  width: 400px;
+  align-self: center;
+}
+
+#gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container {
+  display: inline;
+  align-self: center;
+}
+
+.img-container p {
+  text-align: center;
+  font-size: 60px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 100px;
+}
+
+.img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}/*# sourceMappingURL=main.css.map */
