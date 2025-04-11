@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>vue ajax</title>
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer type="module" src="js/main.js"></script>
+</head>
+
+<body>
+  <h1>Movie</h1>
+    <div class="grid-con" id="app">
+        <!-- Movie List Section -->
+        <div class="col-span-full m-col-start-1 m-col-end-13">
+            <h2>Top Grossing Movies</h2>
+            <p>Explore the most epic blockbusters of all time.</p>
+            <p>Click on a movie to find out more about it.</p>
+    
+            <!-- Loading Indicator -->
+            <div v-if="loadingMovies">
+                <img src="images/loader.svg" alt="loading indicator" class="loader">
+            </div>
+    
+            <!-- Movie List -->
+            <ul id="movie-list">
+                <li v-for="movie in moviesData" :key="movie.id">
+                    <h3>
+                        Title: 
+                        <a href="#movie" @click="getMovie(movie.id)">
+                            {{ movie.title }}
+                        </a>
+                    </h3>
+                </li>
+            </ul>
+        </div>
+    
+        <!-- Movie Detail Section -->
+        <div class="col-span-full m-col-start-1 m-col-end-13" id="movieInfoCon">
+            <!-- Loading Indicator -->
+            <div v-if="loading">
+                <img src="images/loader.svg" alt="loading indicator" class="loader">
+            </div>
+    
+            <!-- Error Display -->
+            <div v-if="error" style="color:red;">{{ error }}</div>
+    
+            <!-- Movie Info Box -->
+            <div v-if="title" id="info-box" :key="title">
+                <img :src="`images/${poster}`" alt="movie poster">
+                <p><span class="title">Director:</span> {{ director }}</p>
+                <p><span class="title">Description:</span> {{ short_description }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+    
+
+</html>
