@@ -21,9 +21,9 @@ class BookController extends Controller {
 
 
      public function getOne($id) {
-        $book = Book::join('authors', 'author_id', '=', 'authors.id')->select('books.id','title','book_image','published_date','name')->where('books.id', '=', $id)->get();
-         return response()->json($book);
-     }
+        $book = Book::join('authors', 'books.author_id', '=', 'authors.id')->select('books.id', 'title', 'book_image', 'published_date', 'name', 'bio')->where('books.id', '=', $id)->get();
+        return response()->json($book);
+    }
 
 
      public function save(Request $request) {

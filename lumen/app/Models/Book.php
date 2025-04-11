@@ -11,7 +11,7 @@ class Book extends Model
      *
      * @var array
      */
-    protected $fillable = ['title','author_id','published_date','book_image'];
+    protected $fillable = ['title','author_id','published_date','book_image', 'bio'];
 
     /**
      * The attributes excluded from the model's JSON form.
