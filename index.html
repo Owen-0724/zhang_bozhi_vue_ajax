@@ -12,47 +12,43 @@
 </head>
 
 <body>
-  <h1>Movie</h1>
+  <h1>Movie Database</h1>
     <div class="grid-con" id="app">
-        <!-- Movie List Section -->
-        <div class="col-span-full m-col-start-1 m-col-end-13">
-            <h2>Top Grossing Movies</h2>
-            <p>Explore the most epic blockbusters of all time.</p>
-            <p>Click on a movie to find out more about it.</p>
-    
-            <!-- Loading Indicator -->
-            <div v-if="loadingMovies">
-                <img src="images/loader.svg" alt="loading indicator" class="loader">
-            </div>
-    
-            <!-- Movie List -->
-            <ul id="movie-list">
-                <li v-for="movie in moviesData" :key="movie.id">
-                    <h3>
-                        Title: 
-                        <a href="#movie" @click="getMovie(movie.id)">
-                            {{ movie.title }}
-                        </a>
-                    </h3>
-                </li>
-            </ul>
+
+      <div class="col-span-full" id="description">
+        <h2>Top Grossing Movies</h2>
+        <p>Explore the most epic blockbusters of all time.</p>
+        <p>Click on a movie to find out more about it.</p>
+      </div>
+
+      <div class="col-span-full m-col-start-1 m-col-end-7">
+
+        <div v-if="loadingMovies">
+          <div class="loader"></div>
         </div>
     
-        <!-- Movie Detail Section -->
-        <div class="col-span-full m-col-start-1 m-col-end-13" id="movieInfoCon">
-            <!-- Loading Indicator -->
+        <ul id="movie-list">
+          <li v-for="movie in moviesData" :key="movie.id">
+            <a href="#movie" @click="getMovie(movie.id)">
+              {{ movie.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    
+
+        <div class="col-span-full m-col-start-7 m-col-end-13" id="movieInfoCon">
+
             <div v-if="loading">
-                <img src="images/loader.svg" alt="loading indicator" class="loader">
+                <div class="loader"></div>
             </div>
     
-            <!-- Error Display -->
-            <div v-if="error" style="color:red;">{{ error }}</div>
-    
-            <!-- Movie Info Box -->
+            <div v-if="error">{{ error }}</div>
+
             <div v-if="title" id="info-box" :key="title">
                 <img :src="`images/${poster}`" alt="movie poster">
-                <p><span class="title">Director:</span> {{ director }}</p>
-                <p><span class="title">Description:</span> {{ short_description }}</p>
+                <p><span class="title bold">Director</span><br>{{ director }}</p>
+                <p><span class="title bold">Description</span><br>{{ short_description }}</p>
             </div>
         </div>
     </div>

@@ -1,41 +1,31 @@
-.content {
-    display: none;
-  }
+#description{
+  margin-bottom: 2rem;
+}
 
- #web-dev{
+#info-box p{
+  text-align: left;
+}
+
+.loader {
   display: block;
- } 
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
 
- .img-container img{
-  margin: 30px;
-  width: 400px;
-  align-self: center;
-
- }
-
- #gallery{
-  display: flex;
-    justify-content: center;
-    align-items: center;
- }
-
- .img-container{
-  display: inline;
-  align-self: center;
- }
-
- .img-container p{
-  text-align: center;
-  font-size: 60px;
- }
-
- h1{
-  text-align: center;
-  font-size: 100px;
- }
-
- .img:hover{
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.img:hover{
   transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-  
- }
+  transition: transform 0.3s ease-in-out;  
+}
+
+#info-box img{
+  max-width: 300px;
+}

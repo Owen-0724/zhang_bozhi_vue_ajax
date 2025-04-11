@@ -1,0 +1,54 @@
+*{
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+    background-color: rgb(24, 24, 24);
+    color: white;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+    font-size: 6rem;
+    margin: 2rem 0;
+}
+
+a {
+	color: white;
+}
+
+a:hover{
+    color: grey;
+}
+
+h2,p{
+    text-align: center;
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+p{
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+#movie-list li{
+    padding-bottom: 3rem;
+}
+#movie-list a{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#info-box p{
+    margin: 0;
+    padding-bottom: 1rem;
+}
